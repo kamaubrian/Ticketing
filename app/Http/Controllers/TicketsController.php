@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Category;
 use App\Ticket;
+use App\Mailers\AppMailer;
 
 use Illuminate\Http\Request;
 
