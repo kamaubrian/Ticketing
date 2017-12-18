@@ -19,7 +19,7 @@
                             <label for="title" class="col-md-4 control-label">Title</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}">
+                                <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required>
 
                                 @if ($errors->has('title'))
                                     <span class="help-block">
@@ -71,7 +71,7 @@
                             <label for="message" class="col-md-4 control-label">Message</label>
 
                             <div class="col-md-6">
-                                <textarea rows="10" id="message" class="form-control" name="message"></textarea>
+                                <textarea rows="10" id="message" class="form-control" name="message" required></textarea>
 
                                 @if ($errors->has('message'))
                                     <span class="help-block">
