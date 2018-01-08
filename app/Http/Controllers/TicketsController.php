@@ -44,9 +44,19 @@ class TicketsController extends Controller
     public function show($ticket_id){
         $ticket = Ticket::where('ticket_id',$ticket_id)->firstOrFail();
 
+        $comments = $ticket->comments;
         $category = $ticket->category;
 
-        return view('tickets.show',compact('ticket','category'));
+        return view('tickets.show',compact('ticket','category','comments'));
     }
+
+    public function index(){
+        $tickets = Ticket::paginate(10);
+        $categories =Category::all();
+
+        return view('tickers.index',compact('tickets','categories'));
+    }
+
+
 
 }
