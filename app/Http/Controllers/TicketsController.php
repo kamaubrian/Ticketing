@@ -56,6 +56,19 @@ class TicketsController extends Controller
 
         return view('tickers.index',compact('tickets','categories'));
     }
+    public function close($ticket_id,AppMailer $mailer){
+        $ticket = Ticket::where('ticket_id',$ticket_id)->firstOrFail();
+
+        $ticket->status = 'Closed';
+        $ticket->save();
+
+        $ticketOwner = $ticket->user;
+        $mailer->sendTicketStatusNotification($ticketOwner,$ticket);
+
+
+    return redirect()->back()->with("Status","The Ticket Has Been Closed.");
+
+    }
 
 
 
