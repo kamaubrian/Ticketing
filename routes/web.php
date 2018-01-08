@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('new_ticket','TicketsController@create');
 Route::post('new_ticket','TicketsController@store');
+Route::get('my_tickets','TicketsController@userTickets');
+Route::get('tickets/{ticket_id}','TicketsController@show');

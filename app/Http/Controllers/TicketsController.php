@@ -35,5 +35,18 @@ class TicketsController extends Controller
 
 
     }
+    public function userTickets(){
+        $tickets = Ticket::where('user_id',Auth::user()->id)->paginate(10);
+        $categories = Category::all();
+
+        return view('tickets.user_tickets',compact('tickets','categories'));
+    }
+    public function show($ticket_id){
+        $ticket = Ticket::where('ticket_id',$ticket_id)->firstOrFail();
+
+        $category = $ticket->category;
+
+        return view('tickets.show',compact('ticket','category'));
+    }
 
 }
