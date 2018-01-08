@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class TicketsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function create(){
         $categories = Category::all();
         return view('tickets.create',compact('categories'));
@@ -69,6 +74,9 @@ class TicketsController extends Controller
     return redirect()->back()->with("Status","The Ticket Has Been Closed.");
 
     }
+
+
+
 
 
 
